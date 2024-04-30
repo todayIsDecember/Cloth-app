@@ -1,0 +1,32 @@
+.review {
+    display: grid;
+    grid-template-columns: 20px 1fr auto;
+    grid-template-areas: 
+    "userIcon name raiting"
+    "description description description";
+    border: 1px solid var(--grey-light);
+    padding: 10px;
+    gap: 10px;
+    transition: 0.3s ease;
+}
+
+.userIcon {
+    grid-area: userIcon;
+}
+
+.name {
+    grid-area: name;
+    text-transform: capitalize;
+}
+
+.raiting {
+    grid-area: raiting;
+}
+
+.description {
+    grid-area: description;
+}
+
+.editable {
+    transform: scale(1.04);
+}

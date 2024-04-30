@@ -1,0 +1,23 @@
+.modal {
+  position: fixed;
+  bottom: -200px;
+  height: 100px;
+  width: 30%;
+  left: 35%;
+  background-color: var(--white);
+  z-index: 999;
+  transition: 0.3s ease 0s;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  opacity: 0;
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+.open {
+  bottom: 0;
+  opacity: 1;
+}

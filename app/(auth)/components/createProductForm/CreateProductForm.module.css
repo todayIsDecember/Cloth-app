@@ -1,0 +1,60 @@
+.form {
+    border: 1px solid var(--grey-light);
+    border-radius: 15px;
+    padding: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(6, 50px);
+    grid-template-areas: 
+    "name name"
+    "addImage image"
+    "color image"
+    "category image"
+    "type image"
+    "description description"
+    "price button";
+    gap: 40px;
+}
+
+.name {
+    grid-area: name;
+}
+
+.addImage {
+    grid-area: addImage;
+}
+
+.image {
+    grid-area: image;
+    justify-self: center;
+    border-radius: 15px;
+}
+
+.description {
+    grid-area: description;
+    font-size: 18px;
+    border: 1px solid var(--grey-light);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.category {
+    grid-area: category;
+}
+
+.type {
+    grid-area: type;
+}
+
+.color {
+    grid-area: color;
+}
+
+.price {
+    grid-area: price;
+}
+
+.button {
+    grid-area: button;
+    justify-self: end;
+}

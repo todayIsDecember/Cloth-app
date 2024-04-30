@@ -1,0 +1,49 @@
+.form {
+    display: grid;
+    border: 1px solid var(--grey-light);
+    grid-template-columns: auto auto;
+    grid-template-areas: 
+    "title title"
+    "name raiting"
+    "review review"
+    ". btn"
+    "alert alert";
+    padding: 15px;
+    gap: 20px;
+    width: 350px;
+}
+
+.title {
+    grid-area: title;
+    padding: 10px;
+    border-bottom: 1px solid var(--grey-light);
+    text-align: center;
+}
+
+.name {
+    grid-area: name;
+}
+
+.review {
+    grid-area: review;
+}
+
+.raiting {
+    grid-area: raiting;
+    justify-self: end;
+}
+
+.btn {
+    grid-area: btn;
+    justify-self: end;
+}
+
+.alert {
+    grid-area: alert;
+}
+
+@media (max-width: 700px) {
+    .form {
+        width: 300px;
+    }
+}

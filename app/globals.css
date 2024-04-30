@@ -1,0 +1,17 @@
+:root {
+  --white: #fff;
+  --grey-light: #dee2e6;
+  --grey: #adb5bd;
+  --black-light: #495057;
+  --black: #0a0908;
+  --red: #9b2226;
+  --green : #2a9d8f;
+  --blue: #0077b6;
+  --gold: #FFD700;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

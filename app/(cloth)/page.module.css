@@ -1,0 +1,49 @@
+.main {
+    padding-bottom: 30px;
+    padding: 0px 25px 40px 25px;
+}
+
+.catalogButton, .reviewButton {
+    justify-self: center;
+}
+
+.advantagesSection, .reviewSection, .catalogSection {
+    display: grid;
+    justify-content: center;
+    width: 100%;
+    grid-template-columns: minmax(320px, 1200px);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.catalog {
+    display: grid;
+    gap: 30px;
+}
+
+.advantages, .reviews {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+@media (max-width: 864px) {
+    .advantages, .reviews {
+        grid-template-columns: 1fr;
+    }
+
+    .advantage {
+        border-bottom: 1px solid var(--grey-light);
+        padding-bottom: 10px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 750px) {
+    .main {
+        padding: 0px 15px 40px 15px;
+    }
+}
+
+@media (max-width: 500px) {
+}

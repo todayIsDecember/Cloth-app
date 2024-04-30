@@ -1,0 +1,12 @@
+.list {
+  list-style: none;
+}
+
+.item {
+  cursor: pointer;
+  border-bottom: 1px solid var(--grey);
+  padding: 10px;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  margin: 0;
+}

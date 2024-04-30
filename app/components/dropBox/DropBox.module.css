@@ -1,0 +1,53 @@
+.dropBox {
+    border: 1px solid var(--grey-light);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: 0px 10px;
+    position: relative;
+}
+
+.arrow {
+    transform: rotate(-90deg);
+    transition: 0.2s ease;
+}
+
+.open {
+    transform: rotate(0deg);
+}
+
+.title {
+    cursor: pointer;
+}
+
+.list {
+    display: grid;
+    grid-template-columns: auto;
+    position: absolute;
+    background-color: var(--white);
+    top: 47px;
+    left: 0;
+    border-left: 1px solid var(--grey-light);
+    border-right: 1px solid var(--grey-light);
+    border-bottom: 1px solid var(--grey-light);
+}
+
+.noEdit {
+    position: relative;
+    top: 0;
+    left: 0;
+    border: none;
+}
+
+.element {
+    padding: 10px;
+    border-top: 1px solid var(--grey-light);
+    color: var(--black-light);
+    cursor: pointer;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    margin: 0;
+    background-color: var(--white);
+    font-size: 12px;
+    z-index: 999;
+}

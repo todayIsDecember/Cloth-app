@@ -1,0 +1,17 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  grid-template-areas:
+  "sidebar body";
+
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.body {
+  grid-area: body;
+  min-height: 100dvh;
+}

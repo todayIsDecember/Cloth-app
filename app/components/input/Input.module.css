@@ -1,0 +1,27 @@
+
+
+.input {
+  border: none;
+  outline: none;
+  padding: 10px 0px;
+  color: var(--black-light);
+  letter-spacing: 1.5px;
+  transition: 0.2s ease;
+  font-size: 12px;
+  /* width: 100%; */
+}
+
+.input::placeholder {
+  color: var(--grey);
+}
+
+.input:is(:focus, :valid) {
+  border-bottom: 1px solid var(--grey-light);
+}
+
+.createInput {
+  border: 1px solid var(--grey-light);
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 18px;
+}

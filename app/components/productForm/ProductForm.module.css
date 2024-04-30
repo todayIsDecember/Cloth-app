@@ -1,0 +1,189 @@
+.form {
+    border: 1px solid var(--grey-light);
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    height: auto;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-left: 40px;
+    padding: 15px;
+}
+
+.image {
+    position: relative;
+    object-fit: contain;
+    object-position: center;
+}
+
+.info {
+    display: grid;
+    padding: 20px;
+    grid-template-columns: auto auto auto auto auto;
+    grid-template-areas: 
+    "name name name name name"
+    "colorTitle color . . ."
+    "widthTitle width heightTitle height ."
+    "infoAlert infoAlert infoAlert infoAlert infoAlert"
+    "isReady isReady isReady switchStatus switchStatus"
+    "isComplect isComplect isComplect switchComplect switchComplect"
+    "infoAlertIsFinished infoAlertIsFinished infoAlertIsFinished infoAlertIsFinished infoAlertIsFinished"
+    "price priceValue . addToBasket button ";
+    gap: 10px;
+    align-items: center;
+    padding: 25px;
+}
+
+.name {
+    grid-area: name;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.colorTitle {
+    grid-area: colorTitle;
+}
+
+.color {
+    grid-area: color;
+}
+
+.widthTitle {
+    grid-area: widthTitle;
+}
+
+.width {
+    grid-area: width;
+}
+
+.heightTitle {
+    grid-area: heightTitle;
+}
+
+.height {
+    grid-area: height;
+}
+
+.infoAlert {
+    grid-area: infoAlert;
+}
+
+.isReady {
+    grid-area: isReady;
+}
+
+.infoAlertIsFinished {
+    grid-area: infoAlertIsFinished;
+}
+
+
+.price {
+    grid-area: price;
+}
+
+.priceValue {
+    grid-area: priceValue;
+}
+
+.addToBasket {
+    grid-area: addToBasket;
+}
+
+.button {
+    grid-area: button;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 17px;
+}
+
+.switchStatus {
+    grid-area: switchStatus;
+}
+
+.isComplect {
+    grid-area: isComplect;
+}
+
+.switchComplect {
+    grid-area: switchComplect;
+}
+
+.switch input {display:none;}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--grey-light);
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 13px;
+    width: 13px;
+    left: 2px;
+    bottom: 2px;
+    background-color: var(--grey);
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background: var(--grey-light)
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px var(--primary);
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(13px);
+    -ms-transform: translateX(13px);
+    transform: translateX(13px);
+    background: white;
+}
+
+@media (max-width: 1200px) {
+    .form {
+        margin-right: 20px;
+    }
+}
+
+@media (max-width: 700px) {
+    .form {
+        grid-template-columns: 1fr;
+        grid-template-rows: 400px 1fr;
+        margin: 0px 20px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: none;
+    }
+
+    .image {
+        margin: 0px 0px;
+    }
+
+    .info {
+        grid-template-columns: auto auto;
+        grid-template-areas: 
+        "name name"
+        "colorTitle color"
+        "widthTitle width" 
+        "heightTitle height"
+        "infoAlert infoAlert"
+        "isReady switchStatus"
+        "isComplect switchComplect"
+        "infoAlertIsFinished infoAlertIsFinished"
+        "price priceValue" ". addToBasket";
+    }
+}

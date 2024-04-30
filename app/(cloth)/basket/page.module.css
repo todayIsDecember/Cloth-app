@@ -1,0 +1,19 @@
+.basket {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 30px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.productsContainer {
+    display: grid;
+    gap: 20px;
+}
+
+@media (max-width: 1200px) {
+    .basket {
+        grid-template-columns: 1fr;
+    }
+    
+}

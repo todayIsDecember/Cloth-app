@@ -1,0 +1,37 @@
+.product {
+  position: relative;
+  border: 1px solid var(--grey-light);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  justify-items: start;
+  transition: 0.4s ease 0s;
+  padding-right: 10px;
+  background-color: var(--white);
+  cursor: pointer;
+  gap: 20px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.active {
+  /* border: 1px solid var(--green); */
+  box-shadow: 10px 10px 40px var(--grey);
+  transform: scale(1.02);
+}
+
+.inActive::before {
+  position: absolute;
+  content: 'відключено';
+  display: grid;
+  justify-content: end;
+  align-content: start;
+  padding: 25px;
+  background-color: rgba(0, 0, 0, 0.4);
+  font-size: 16px;
+  letter-spacing: 5px;
+  color: var(--white);
+  inset: 0;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}

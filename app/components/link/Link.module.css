@@ -1,0 +1,23 @@
+.link {
+    color: var(--grey);
+    letter-spacing: 2.5px;
+    font-size: 14px;
+}
+
+.active {
+    color: var(--black-light);
+    fill: var(--black-light);
+    font-weight: 600;
+    transform: scale(1.03);
+    transition: 0.4s ease;
+}
+
+.active svg {
+    fill: var(--black-light);
+}
+
+@media (max-width: 700px) {
+    .link {
+        font-size: 20px;
+    }
+}

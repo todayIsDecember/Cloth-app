@@ -1,0 +1,33 @@
+.wrapper {
+  display: grid;
+  border: 1px solid var(--grey-light);
+  border-radius: 15px;
+  padding: 30px;
+  gap: 20px;
+}
+
+.photosContainer {
+  display: grid;
+  grid-template-columns: repeat(10, auto);
+  gap: 20px;
+  justify-content: start;
+
+}
+
+.photosContainer img {
+  transition: 0.3s ease 0s;
+}
+
+.photosContainer .selected {
+  transform: scale(1.1);
+}
+
+.buttonsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 20px;
+}
+
+.addImage {
+  cursor: pointer;
+}

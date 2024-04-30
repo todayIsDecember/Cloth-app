@@ -1,0 +1,31 @@
+.alert {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    padding: 10px;
+    animation-name: showAlert;
+    animation-duration: 0.5s;
+}
+
+.success {
+    border: 2px solid var(--green);
+    color: var(--green);
+}
+
+.error {
+    border: 2px solid var(--red);
+    color: var(--red);
+}
+
+.info {
+    border: 2px solid var(--blue);
+    color: var(--blue);
+}
+
+@keyframes showAlert {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

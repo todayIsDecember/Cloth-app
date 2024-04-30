@@ -1,0 +1,17 @@
+.imageContainer {
+    position: relative;
+    object-fit: contain;
+    object-position: center;
+}
+
+.image {
+    border-radius: 15px;
+}
+
+.slider {
+    position: relative;
+    object-fit: cover;
+    object-position: center;
+    height: 80dvh;
+    width: 80%;
+}

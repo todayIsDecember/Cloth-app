@@ -1,0 +1,28 @@
+.wrapper {
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    height: 100dvh;
+    gap: 50px;
+}
+
+.login {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-items: center;
+}
+
+.input {
+    width: 80px;
+    padding: 5px;
+    font-size: 16px;
+    text-align: center;
+    border: 2px solid var(--grey-light);
+    border-radius: 5px;
+}
+
+.input:focus-visible {
+    outline: none;
+}

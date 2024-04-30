@@ -1,0 +1,47 @@
+.button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    letter-spacing: 2.5px;
+    text-transform: capitalize;
+}
+
+.m {
+    padding: 5px 15px;
+    font-size: 12px;
+}
+
+.l {
+    padding: 10px 40px;
+    font-size: 16px;
+}
+
+.black {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+.white {
+    background-color: var(--white);
+    color: var(--black);
+    border-radius: 15px;
+    transition: 0.4s ease 0s;
+    width: 200px;
+}
+
+.white:hover {
+    background-color: var(--black);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.transparent {
+    background-color: transparent;
+    color: var(--grey-light);
+    border: 1px solid var(--grey-light);
+}
+
+.active {
+    color: var(--black);
+    border: 1px solid var(--black);
+}
