@@ -33,6 +33,8 @@ export const API = {
   orders: {
     create: `${process.env.NEXT_PUBLIC_DOMAIN}/api/orders/create`,
     getAll: `${process.env.NEXT_PUBLIC_DOMAIN}/api/orders/all`,
+    getById: `${process.env.NEXT_PUBLIC_DOMAIN}/api/orders/getById`,
+    getByCusomerName: `${process.env.NEXT_PUBLIC_DOMAIN}/api/orders/getByName`,
   },
   auth: {
     reg: `${process.env.NEXT_PUBLIC_DOMAIN}/api/auth/register`,

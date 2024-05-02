@@ -1,0 +1,169 @@
+.container {
+    border: 1px solid var(--grey-light);
+    border-radius: 15px;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.customer_info {
+    display: grid;
+    border-bottom: 3px solid var(--grey-light);
+    grid-template-columns: 30px 1fr 30px 1fr 30px 1fr 30px 1fr;
+    grid-template-areas: 
+    "title title title title title title title title"
+    "idIcon id userIcon name phoneIcon phone date_name date"
+    "delivery delivery delivery delivery delivery delivery delivery delivery"
+    "price_name price . . . . . ."
+    "comment_name comment comment comment comment comment comment comment";
+    padding-bottom: 15px;
+    align-items: center;
+    gap: 30px 15px;
+}
+
+.title {
+    grid-area: title;
+}
+
+.idIcon {
+    grid-area: idIcon;
+}
+
+.id {
+    grid-area: id;
+}
+
+.userIcon {
+    grid-area: userIcon;
+}
+
+.name {
+    grid-area: name;
+}
+
+.phoneIcon {
+    grid-area: phoneIcon;
+}
+
+.phone {
+    grid-area: phone;
+}
+
+.delivery {
+    grid-area: delivery;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 30px 15px;
+    grid-template-areas: 
+    "delivery_title delivery_title"
+    "city_name city"
+    "department_name department";
+}
+
+.date_name {
+    grid-area: date_name;
+}
+
+.date {
+    grid-area: date;
+}
+
+.delivery_title {
+    grid-area: delivery_title;
+    justify-self: center;
+}
+
+.city_name {
+    grid-area: city_name;
+}
+
+.city {
+    grid-area: city;
+}
+
+.department_name {
+    grid-area: department_name;
+}
+
+.department {
+    grid-area: department;
+}
+
+.price_name {
+    grid-area: price_name;
+}
+
+.price {
+    grid-area: price;
+}
+
+.comment_name {
+    grid-area: comment_name;
+}
+.comment {
+    grid-area: comment;
+    justify-self: start;
+}
+
+.details {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.details_title {
+    justify-self: center;
+}
+
+.details_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+.detail {
+    border: 1px solid var(--grey-light);
+    padding: 15px;
+    border-radius: 15px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 15px;
+    align-items: center;
+}
+
+.image {
+    border-radius: 15px;
+}
+
+.detail_info {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 15px;
+    justify-content: space-between;
+    grid-template-areas: 
+    "detail_title detail_title"
+    "detail_width detail_height"
+    "detail_color detail_price";
+}
+
+.detail_title {
+    grid-area: detail_title;
+    justify-self: center;
+}
+
+.detail_width {
+    grid-area: detail_width;
+}
+
+.detail_height {
+    grid-area: detail_height;
+}
+
+.detail_color {
+    grid-area: detail_color;
+}
+
+.detail_price {
+    grid-area: detail_price;
+}

@@ -3,7 +3,7 @@ import { getAllPrices } from '../../../../API/getAllPrices'
 import { getAllProducts } from '../../../../API/getAllProducts'
 import { getAllReviews } from '../../../../API/getAllReviews'
 import { H, Review } from '../../../../components'
-import { APrices, AReviews, Products } from '../../../components'
+import { AOrders, APrices, AReviews, Products } from '../../../components'
 import styles from './page.module.css'
 
 export default async function Page ({params}: {params: {page: string}}) {
@@ -54,7 +54,7 @@ export default async function Page ({params}: {params: {page: string}}) {
       }).then(res => res.json())
       return (
         <div className={styles.wrapper}>
-          {JSON.stringify(orders)}
+          <AOrders orders={orders}></AOrders>
         </div>
       )
     }
