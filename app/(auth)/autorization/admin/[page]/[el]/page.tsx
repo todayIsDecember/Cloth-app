@@ -29,7 +29,7 @@ export default async function Page ({params}: {params: {page: string, el: string
     }).then(res => res.json())
     return (
       <div className={styles.wrapper}>
-        <AOrderDetails order={order[0]}></AOrderDetails>
+        <AOrderDetails order={order}></AOrderDetails>
       </div>
     )
   }
