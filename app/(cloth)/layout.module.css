@@ -17,7 +17,7 @@
 }
 
 .sidebar {
-    display: block;
+    display: grid;
     grid-area: sidebar;
 }
 
