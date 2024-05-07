@@ -23,13 +23,12 @@ export const MyImage = ({images, className, ...props}: MyImageProps): JSX.Elemen
 
     return (
         <div className={cn(className, styles.imageContainer)} {...props}>
-            <img 
-                src={`${API.image.get}/${images[0]}`} 
-                alt="image" 
+            <span
                 onClick={openModal} 
                 className={styles.image} 
-                style={{ cursor: 'pointer' }}
-            />
+                style={{ backgroundImage: `url(${API.image.get}/${images[0]})` }}
+            >
+            </span>
             <Modal isOpen={isOpen} onClose={closeModal} images={images}></Modal>
         </div>
     )

@@ -72,5 +72,6 @@
         width: 100%;
         background-color: var(--white);
         z-index: 999;
+        padding: 10px 0;
     }
 }

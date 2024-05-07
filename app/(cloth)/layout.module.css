@@ -62,7 +62,7 @@
 
 @media (max-width: 700px) {
     .previewPhoto {
-        margin-top: 0px;
+        margin-top: 52px;
     }
     .sidebar {
         display: none !important;
