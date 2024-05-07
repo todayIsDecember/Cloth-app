@@ -12,23 +12,6 @@ import { Modal } from "../modal/Modal";
 
 export const MyImage = ({images, className, ...props}: MyImageProps): JSX.Element => {
     const [isOpen, setIsOpen] = useState(false)
-    const [imageLoaded, setImageLoaded] = useState(false);
-
-    useEffect(() => {
-        const handleImageLoad = () => {
-            setImageLoaded(true);
-        };
-
-        // Ваш код для завантаження зображення
-        const imageElement = new Image();
-        imageElement.src = `${API.image.get}/${images[0]}`;
-        imageElement.onload = handleImageLoad;
-
-        // Прибираємо підписки при видаленні компонента
-        return () => {
-            imageElement.onload = null;
-        };
-    }, [images]);
 
     const openModal = () => {
         setIsOpen(true);
@@ -40,7 +23,13 @@ export const MyImage = ({images, className, ...props}: MyImageProps): JSX.Elemen
 
     return (
         <div className={cn(className, styles.imageContainer)} {...props}>
-            <NextImage src={`${API.image.get}/${images[0]}`} fill alt="image" onClick={openModal} priority className={styles.image} />
+            <img 
+                src={`${API.image.get}/${images[0]}`} 
+                alt="image" 
+                onClick={openModal} 
+                className={styles.image} 
+                style={{ cursor: 'pointer' }}
+            />
             <Modal isOpen={isOpen} onClose={closeModal} images={images}></Modal>
         </div>
     )
