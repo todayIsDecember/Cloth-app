@@ -50,7 +50,7 @@ export default async function Page ({params}: {params: {page: string}}) {
     {
       const orders = await fetch(API.orders.getAll, {
         method: 'GET',
-        next: { revalidate: 1000 },
+        next: { revalidate: 10 },
       }).then(res => res.json())
       return (
         <div className={styles.wrapper}>

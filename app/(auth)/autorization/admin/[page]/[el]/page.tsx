@@ -25,7 +25,7 @@ export default async function Page ({params}: {params: {page: string, el: string
     )
   }
   else if(name === 'order') {
-    const order = await fetch(`${API.orders.getById}/${id}`, {
+    const order = await fetch(`${API.orders.getById}/${Number(id)}`, {
     }).then(res => res.json())
     return (
       <div className={styles.wrapper}>
