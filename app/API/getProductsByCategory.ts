@@ -7,7 +7,6 @@ export const getProductsByCategory = async (category) => {
     headers: {
       "Content-Type": "application/json",
     },
-    next: { revalidate: 10 },
   });
   const data = await response.json();
   return data;

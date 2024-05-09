@@ -17,7 +17,7 @@ export default async function Page ({params}: {params: {page: string}}) {
   if(params.page == 'productsPanel') 
     {
       const products = await fetch(API.products.getAllWithDiscontinued, {
-        next: { revalidate: 10 },
+        next: { revalidate: 1000 },
       }).then(res => res.json())
       return (
         <div className={styles.wrapper}>
@@ -50,7 +50,7 @@ export default async function Page ({params}: {params: {page: string}}) {
     {
       const orders = await fetch(API.orders.getAll, {
         method: 'GET',
-        next: { revalidate: 10 },
+        next: { revalidate: 1000 },
       }).then(res => res.json())
       return (
         <div className={styles.wrapper}>

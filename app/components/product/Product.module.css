@@ -1,7 +1,7 @@
 .product {
     display: grid;
     grid-template-columns: 300px 1fr;
-    grid-template-rows: 300px;
+    grid-template-rows: auto;
     padding: 15px;
     border: 1px solid var(--grey-light);
     align-items: center;
@@ -30,17 +30,23 @@
     text-align: center;
 } */
 
-@media (max-width: 720px) {
+@media (max-width: 700px) {
     .product {
         grid-template-columns: 1fr;
         grid-template-rows: 400px 1fr;
     }
+
+    .name {
+        text-align: center;
+    }
 }
 
 @media (max-width: 500px) {
-    .product {
-        grid-template-columns: 1fr;
-        grid-template-rows: 300px 1fr;
+    .description {
+        display: none;
+    }
+    .name {
+        padding-bottom: 10px;
     }
 }
 

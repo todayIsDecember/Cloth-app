@@ -10,6 +10,12 @@
     display: block;
 }
 
+@media (max-width:700px) {
+    .image {
+        height: 400px;
+    }
+}
+
 .slider {
     position: relative;
     object-fit: cover;
