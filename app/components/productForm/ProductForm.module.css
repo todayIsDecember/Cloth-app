@@ -165,8 +165,14 @@ input:checked + .slider:before {
         margin: 0px 0px;
     }
 
+    .name {
+        margin: 10px 0px;
+    }
+
     .info {
         grid-template-columns: auto auto;
+        gap: 5px;
+        padding: 0px;
         grid-template-areas: 
         "name name"
         "colorTitle color"
