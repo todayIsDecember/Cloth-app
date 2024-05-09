@@ -1,39 +1,35 @@
 .sidebar {
-    background-color: var(--black);
+    background-color: var(--black-light);
     height: 100%;
-    width: 300px;
     box-shadow: 3px 0px 27px 0px var(--black-light);
-    border-right: 3px solid var(--white);
     display: grid;
-    align-content: space-around;
-    padding: 0px 20px;
+    align-content: start;
+    width: auto;
+
 }
 
 .sidebar ul {
+    margin-top: 70px;
     list-style: none;
     padding: 0;
     display: grid;
-    gap: 30px;
+    gap: 40px;
     grid-template-columns: 1fr;
     justify-items: start;
     align-content: start;
 }
 
 .sidebar ul .element {
-    text-decoration: none;
-    color: var(--white);
-    font-size: 20px;
     cursor: pointer;
-    transition: 0.3s ease 0s;
-    text-transform: uppercase;
-    letter-spacing: 4px;
+    padding: 0px 20px;
+}
+
+.active svg{
+    fill: var(--burgundy)
 }
 
 .active {
-    font-weight: 600;
-    transform: scale(1.03);
-    padding-bottom: 5px;
-    border-bottom: 1px solid var(--white);
+    border-right: 1px solid var(--burgundy);
 }
 
 .btn {

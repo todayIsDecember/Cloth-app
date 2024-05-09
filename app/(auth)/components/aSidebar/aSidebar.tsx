@@ -4,36 +4,39 @@ import { ASidebarProps } from "./aSidebarProps";
 import styles from './aSidebar.module.css'
 import cn from 'classnames'
 import { useEffect, useState } from "react";
-import { Button } from "../../../components";
-import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import ProductIcon from '../../../../public/productAdmin.svg'
+import PriceIcon from '../../../../public/priceAdmin.svg'
+import OrderIcon from '../../../../public/orderAdmin.svg'
+import ReviewIcon from '../../../../public/reviewAdmin.svg'
+import ExitIcon from '../../../../public/exit.svg'
 
 export const ASidebar = ({ className, ...props}: ASidebarProps): JSX.Element => {
-    const [value, setValue] = useState<string>('')
-    const links: string[] = ['Продукти', 'Відгуки', 'Ціни', 'Замовлення']
-    const dictionary = {
-        'Продукти': 'productsPanel',
-        'Відгуки': 'reviewsPanel',
-        'Ціни': 'pricesPanel',
-        'Замовлення': 'ordersPanel'
-    }
-    const router = useRouter()
+    const [valueLink, setValueLink] = useState<string>('')
 
     const onExidHandler = () => {
         document.cookie = `token=`
-        router.push('/')
     }
 
     return (
         <div className={cn(className, styles.sidebar)}>
             <ul className={styles.list}>
-                {links.map((link, index) => (
-                    <Link key={index} href={`/autorization/admin/${dictionary[link]}`} className={cn(styles.element, {
-                        [styles.active]: value == link
-                    })} onClick={() => setValue(link)}>{link}</Link>
-                ))}
+                <Link href={`/autorization/admin/productsPanel`} className={cn(styles.element, {[styles.active]: valueLink === 'Продукти'})} onClick={() => setValueLink('Продукти')}>
+                    <ProductIcon/>
+                </Link>
+                <Link href={`/autorization/admin/reviewsPanel`} className={cn(styles.element, {[styles.active]: valueLink === 'Відгуки'})} onClick={() => setValueLink('Відгуки')}>
+                    <ReviewIcon/>
+                </Link>
+                <Link href={`/autorization/admin/pricesPanel`} className={cn(styles.element, {[styles.active]: valueLink === 'Ціни'})} onClick={() => setValueLink('Ціни')}>
+                    <PriceIcon/>
+                </Link>
+                <Link href={`/autorization/admin/ordersPanel`} className={cn(styles.element, {[styles.active]: valueLink === 'Замовлення'})} onClick={() => setValueLink('Замовлення')}>
+                    <OrderIcon/>
+                </Link>
+                <Link href={`/`} className={cn(styles.element)} onClick={() => onExidHandler()}>
+                    <ExitIcon/>
+                </Link>
             </ul>
-            <Button appearance="white" size="l" className={styles.btn} onClick={onExidHandler}>Вихід</Button>
         </div>
     )
 }

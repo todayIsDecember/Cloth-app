@@ -3,8 +3,10 @@
 import { ProductProps } from "./ProductProps";
 import cn from 'classnames';
 import styles from './Product.module.css'
-import { H, Button, Text, BackDrop, MyImage } from "..";
+import { H, Button, Text, BackDrop, MyImage, Alert } from "..";
 import { useEffect, useState } from "react";
+import DeleteIcon from '../../../public/delete.svg'
+import ByIcon from '../../../public/buy.svg'
 
 export const Product = ({className, product, ...props}: ProductProps): JSX.Element => {
 
@@ -53,16 +55,19 @@ export const Product = ({className, product, ...props}: ProductProps): JSX.Eleme
         }
     }
     return (
-        <div className={cn(className, styles.product)} {...props}>
-            <MyImage images={product.photo} className={styles.image}></MyImage>
-            <div className={styles.info}>
-                <H tag="h2" className={styles.name}>{product.name}</H>
-                <Text className={styles.description}>{product.description}</Text>
-                <div className={styles.priceContainer}>
-                    <div>{product.price}грн / м</div>
-                    <Button appearance="black" size="m" onClick={onClickButtonBasketHandler}>{addToBasket? 'Видалити з кошика' : 'Додати в кошик'}</Button>
+        <>
+            <div className={cn(className, styles.product)} {...props}>
+                <MyImage images={product.photo} className={styles.image}></MyImage>
+                <div className={styles.info}>
+                    <H tag="h2" className={styles.name}>{product.name}</H>
+                    <Text className={styles.description}>{product.description}</Text>
+                    <div className={styles.priceContainer}>
+                        <div>{product.price}грн / м</div>
+                        <div onClick={onClickButtonBasketHandler}>{addToBasket? <DeleteIcon className={styles.icon}/> : <ByIcon className={styles.icon}/>}</div>
+                    </div>
+                    {addToBasket && <Alert appearance="success" className={styles.alert}>Товар додано до кошика</Alert>}
                 </div>
             </div>
-        </div>
+        </>
     )
 }

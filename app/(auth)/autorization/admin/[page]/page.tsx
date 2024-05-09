@@ -17,7 +17,7 @@ export default async function Page ({params}: {params: {page: string}}) {
   if(params.page == 'productsPanel') 
     {
       const products = await fetch(API.products.getAllWithDiscontinued, {
-        next: { revalidate: 1000 },
+        next: { revalidate: 10 },
       }).then(res => res.json())
       return (
         <div className={styles.wrapper}>

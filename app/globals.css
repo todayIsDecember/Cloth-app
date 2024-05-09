@@ -2,12 +2,13 @@
   --white: #fff;
   --grey-light: #dee2e6;
   --grey: #adb5bd;
-  --black-light: #495057;
+  --black-light: #343a40;
   --black: #0a0908;
   --red: #9b2226;
   --green : #2a9d8f;
   --blue: #0077b6;
   --gold: #FFD700;
+  --burgundy: #c6ac8f
 }
 
 html, body {

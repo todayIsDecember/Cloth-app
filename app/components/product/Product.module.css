@@ -26,6 +26,15 @@
     padding-top: 15px;
 }
 
+.icon {
+    width: 25px;
+    height: 25px;
+    fill: var(--black-light);
+}
+.alert {
+    margin-top: 10px;
+}
+
 /* .name {
     text-align: center;
 } */
