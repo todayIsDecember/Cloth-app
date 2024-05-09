@@ -11,6 +11,7 @@
     padding: 15px;
     gap: 20px;
     width: 350px;
+    align-items: center;
 }
 
 .title {
@@ -30,7 +31,6 @@
 
 .raiting {
     grid-area: raiting;
-    justify-self: end;
 }
 
 .btn {
@@ -45,5 +45,20 @@
 @media (max-width: 700px) {
     .form {
         width: 300px;
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "title"
+        "raiting"
+        "name"
+        "review"
+        "btn"
+        "alert";
+    }
+
+    .raiting {
+        justify-self: center;
+    }
+    .btn {
+        justify-self: center;
     }
 }

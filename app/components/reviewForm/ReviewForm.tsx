@@ -46,7 +46,7 @@ export const ReviewForm = ({className, ...props}: ReviewFormProps): JSX.Element 
       <H tag="h3" className={styles.title}>Залиште відгук про нашу продукцію</H>
       <Input inputValue="Ваше ім'я" className={styles.name} {...register('name')}/>
       <Textarea value="ваш відгук" className={styles.review} {...register('description')}/>
-      <Controller control={control} name="raiting" render={({field}) => <Rating raiting={field.value} setRating={field.onChange} isEditable/>}/>
+      <Controller control={control} name="raiting" render={({field}) => <Rating raiting={field.value} className={styles.raiting} setRating={field.onChange} isEditable/>}/>
       <Button appearance="black" size="m" className={styles.btn}>Надіслати</Button>
       {isSuccess && <Alert appearance="success" className={styles.alert}>Дякуємо за відгук, він буде доданий на сайт ближчим часом</Alert>}
       {error && <Alert appearance="success" className={styles.alert}>{error}</Alert>}
