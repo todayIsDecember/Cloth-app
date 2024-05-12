@@ -35,10 +35,6 @@
     margin-top: 10px;
 }
 
-/* .name {
-    text-align: center;
-} */
-
 @media (max-width: 700px) {
     .product {
         grid-template-columns: 1fr;
@@ -48,12 +44,12 @@
     .name {
         text-align: center;
     }
-}
-
-@media (max-width: 500px) {
     .description {
         display: none;
     }
+}
+
+@media (max-width: 500px) {
     .name {
         padding-bottom: 10px;
     }

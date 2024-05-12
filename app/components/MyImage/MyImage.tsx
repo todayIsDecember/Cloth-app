@@ -3,33 +3,30 @@
 import { MyImageProps } from "./MyImageProps";
 import cn from 'classnames';
 import styles from './MyImage.module.css';
-import NextImage from 'next/image'; // Перейменовано з Image на NextImage
 import { API } from "../../../helpers/api";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { useEffect, useState } from "react";
 import { Modal } from "../modal/Modal";
+import Image from 'next/image'
 
-export const MyImage = ({images, className, ...props}: MyImageProps): JSX.Element => {
+export const MyImage = ({images, description, className, ...props}: MyImageProps): JSX.Element => {
     const [isOpen, setIsOpen] = useState(false)
 
     const openModal = () => {
         setIsOpen(true);
+        document.body.style.overflow = 'hidden';
     };
 
     const closeModal = () => {
         setIsOpen(false);
+        document.body.style.overflow = '';
     };
 
     return (
         <div className={cn(className, styles.imageContainer)} {...props}>
-            <span
-                onClick={openModal} 
-                className={styles.image} 
-                style={{ backgroundImage: `url(${API.image.get}/${images[0]})` }}
-            >
-            </span>
-            <Modal isOpen={isOpen} onClose={closeModal} images={images}></Modal>
+            <Image onClick={openModal} src={`${API.image.get}/${images[0]}`} fill priority sizes="(100vw - 30px)" className={styles.image} alt="image"></Image>
+            <Modal description={description} isOpen={isOpen} onClose={closeModal} images={images}></Modal>
         </div>
     )
 }

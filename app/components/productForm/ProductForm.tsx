@@ -137,7 +137,7 @@ export const ProductForm = ({className,handleOnChange,  product, ...props}: Prod
 
   return (
     <form className={cn(className, styles.form)} {...props}>
-      <MyImage className={styles.image} images={image}></MyImage>
+      <MyImage description={product.description} className={styles.image} images={image}></MyImage>
       <div className={styles.info}>
         <H tag="h3" className={styles.name}>{product.name}</H>
         <Text className={styles.colorTitle}>Колір</Text>

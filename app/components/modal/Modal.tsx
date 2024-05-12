@@ -9,12 +9,12 @@ import 'slick-carousel/slick/slick-theme.css';
 import Image from 'next/image'
 import { API } from "../../../helpers/api";
 import { useRef, useState } from "react";
+import { Button } from "../button/Button";
+import ExitIcon from '../../../public/exit.svg'
 
-export const Modal = ({className, isOpen, onClose, images, ...props}: ModalProps): JSX.Element => {
+export const Modal = ({className, description, isOpen, onClose, images, ...props}: ModalProps): JSX.Element => {
 
     const modalRef = useRef<HTMLDivElement>(null);
-
-    const [currentSlide, setCurrentSlide] = useState(0);
 
     const handleModalClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         if (e.target !== e.currentTarget) {
@@ -42,6 +42,10 @@ export const Modal = ({className, isOpen, onClose, images, ...props}: ModalProps
                     </div>
                 ))}
             </Slider>
+            <div className={styles.description}>
+                {description}
+            </div>
+            <ExitIcon className={styles.exit} onClick={onClose}/>
         </div>
     )
 }
