@@ -2,7 +2,7 @@ import { API } from "../../../../../../helpers/api";
 import { IProduct } from "../../../../../../interfaces/product.interface";
 import { getProductById } from "../../../../../API/getProductById";
 import { H } from "../../../../../components";
-import { AInfo, AOrderDetails, APhotos, CreateProductForm } from "../../../../components";
+import { AInfo, APhotos, CreateProductForm } from "../../../../components";
 import styles from './page.module.css'
 
 export default async function Page ({params}: {params: {page: string, el: string}}) {
@@ -21,15 +21,6 @@ export default async function Page ({params}: {params: {page: string, el: string
     return (
       <div className={styles.wrapper}>
         <CreateProductForm></CreateProductForm>
-      </div>
-    )
-  }
-  else if(name === 'order') {
-    const order = await fetch(`${API.orders.getById}/${Number(id)}`, {
-    }).then(res => res.json())
-    return (
-      <div className={styles.wrapper}>
-        <AOrderDetails order={order}></AOrderDetails>
       </div>
     )
   }

@@ -1,9 +1,8 @@
 import { API } from '../../../../../helpers/api'
 import { getAllPrices } from '../../../../API/getAllPrices'
-import { getAllProducts } from '../../../../API/getAllProducts'
 import { getAllReviews } from '../../../../API/getAllReviews'
-import { H, Review } from '../../../../components'
-import { AOrders, APrices, AReviews, Products } from '../../../components'
+import { H } from '../../../../components'
+import { APrices, AReviews, Products } from '../../../components'
 import styles from './page.module.css'
 
 export default async function Page ({params}: {params: {page: string}}) {
@@ -11,13 +10,12 @@ export default async function Page ({params}: {params: {page: string}}) {
     'productsPanel': 'Продукти',
     'reviewsPanel': 'Відгуки',
     'pricesPanel': 'Ціни',
-    'ordersPanel': 'Замовлення'
   }
 
   if(params.page == 'productsPanel') 
     {
       const products = await fetch(API.products.getAllWithDiscontinued, {
-        next: { revalidate: 10 },
+        next: { revalidate: 1 },
       }).then(res => res.json())
       return (
         <div className={styles.wrapper}>
@@ -43,18 +41,6 @@ export default async function Page ({params}: {params: {page: string}}) {
           {prices.map((price) => (
             <APrices key={price.id} price={price}></APrices>
           ))}
-        </div>
-      )
-    }
-  else if(params.page == 'ordersPanel')
-    {
-      const orders = await fetch(API.orders.getAll, {
-        method: 'GET',
-        next: { revalidate: 10 },
-      }).then(res => res.json())
-      return (
-        <div className={styles.wrapper}>
-          <AOrders orders={orders}></AOrders>
         </div>
       )
     }

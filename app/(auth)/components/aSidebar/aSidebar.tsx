@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 import Link from 'next/link'
 import ProductIcon from '../../../../public/productAdmin.svg'
 import PriceIcon from '../../../../public/priceAdmin.svg'
-import OrderIcon from '../../../../public/orderAdmin.svg'
 import ReviewIcon from '../../../../public/reviewAdmin.svg'
 import ExitIcon from '../../../../public/exit.svg'
 
@@ -29,9 +28,6 @@ export const ASidebar = ({ className, ...props}: ASidebarProps): JSX.Element => 
                 </Link>
                 <Link href={`/autorization/admin/pricesPanel`} className={cn(styles.element, {[styles.active]: valueLink === 'Ціни'})} onClick={() => setValueLink('Ціни')}>
                     <PriceIcon/>
-                </Link>
-                <Link href={`/autorization/admin/ordersPanel`} className={cn(styles.element, {[styles.active]: valueLink === 'Замовлення'})} onClick={() => setValueLink('Замовлення')}>
-                    <OrderIcon/>
                 </Link>
                 <Link href={`/`} className={cn(styles.element)} onClick={() => onExidHandler()}>
                     <ExitIcon/>

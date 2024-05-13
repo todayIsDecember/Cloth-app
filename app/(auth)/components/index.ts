@@ -7,6 +7,3 @@ export * from "./aInfo/AInfo";
 export * from "./createProductForm/CreateProductForm";
 export * from "./aReviews/AReviews";
 export * from "./aPrices/APrices";
-export * from "./aOrders/AOrders";
-export * from "./aOrder/AOrder";
-export * from "./aOrderDetails/AOrderDetails";
