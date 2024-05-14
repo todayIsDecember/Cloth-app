@@ -59,7 +59,7 @@ export const Product = ({className, product, ...props}: ProductProps): JSX.Eleme
             <div className={cn(className, styles.product)} {...props}>
                 <MyImage description={product.description} images={product.photo} className={styles.image}></MyImage>
                 <div className={styles.info}>
-                    <H tag="h2" className={styles.name}>{product.name}</H>
+                    <H tag="h2" className={styles.title}>{product.name}</H>
                     <Text className={styles.description}>{product.description}</Text>
                     <div className={styles.priceContainer}>
                         <div>{product.price}грн / м</div>

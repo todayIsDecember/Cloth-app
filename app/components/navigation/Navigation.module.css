@@ -1,5 +1,32 @@
 .nav {
     display: grid;
     grid-template-columns: repeat(3, auto);
-    gap: 20px;
+    gap: 30px;
+}
+
+.button {
+    box-shadow: inset 0px 1px 20px var(--green);
+    border-radius: 3px;
+    padding: 10px 15px;
+}
+
+.active {
+    animation: active 0.5s ease-in forwards;
+}
+
+@keyframes active {
+    0% {
+        transform: scale(1) translateY(0);
+        box-shadow: inset 0px 1px 20px var(--green);
+    }
+
+    50% {
+        transform: scale(1.1) translateY(-4px);
+        box-shadow: inset 0px 20px 20px 0px var(--green);
+    }
+
+    100% {
+        transform: scale(1) translateY(0);
+        box-shadow: inset 0px -20px 20px 0px var(--green);
+    }
 }
