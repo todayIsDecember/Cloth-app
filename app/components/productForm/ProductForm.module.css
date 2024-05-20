@@ -18,7 +18,7 @@
     display: grid;
     padding: 20px;
     grid-template-columns: auto auto auto auto auto;
-    grid-template-areas: 
+    grid-template-areas:
     "name name name name name"
     "colorTitle color . . ."
     "widthTitle width heightTitle height ."
@@ -159,6 +159,7 @@ input:checked + .slider:before {
         grid-template-rows: 400px 1fr;
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: none;
+        justify-items: center;
     }
 
     .image {
@@ -173,10 +174,10 @@ input:checked + .slider:before {
         grid-template-columns: auto auto;
         gap: 5px;
         padding: 0px;
-        grid-template-areas: 
+        grid-template-areas:
         "name name"
         "colorTitle color"
-        "widthTitle width" 
+        "widthTitle width"
         "heightTitle height"
         "infoAlert infoAlert"
         "isReady switchStatus"

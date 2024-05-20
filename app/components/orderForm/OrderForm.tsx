@@ -5,7 +5,7 @@ import cn from 'classnames';
 import styles from './OrderForm.module.css';
 import { useForm, Controller } from 'react-hook-form'
 import { IOrderForm } from "../../../interfaces/orderForm.interface";
-import { Alert, AutoComplit, Button, H, Input, Textarea } from "..";
+import { Alert, AutoComplit, Button, H, Input, Modal, Textarea } from "..";
 import { useEffect, useState } from "react";
 import { getAddresses } from "../../API/getAddresses";
 import { createOrder } from "../../API/createOrder";
@@ -17,15 +17,18 @@ export const OrderForm = ({className, products, ...props}: OrderFormProps): JSX.
   const [city, setCity] = useState<string>('')
   const [delivery, setDelivery] = useState<string>('')
   const [fullPrice, setFullPrice] = useState<number>(0)
-  const [success, setSuccess] = useState<boolean>(false)
   const [error, setError] = useState<string>('')
+  const [isOpen, setIsOpen] = useState(false)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isLoaded, setIsLoaded] = useState<boolean>(false)
+  const [recieverName, setRecieverName] = useState<string>('')
 
   useEffect(() => {
     const price = products.reduce((acc, product) => {
       return acc + product.price
     }, 0)
     setFullPrice(price)
-    
+
   }, [products])
 
   const onSubmit = async (data) => {
@@ -40,7 +43,9 @@ export const OrderForm = ({className, products, ...props}: OrderFormProps): JSX.
       setError('товарів не знайдено')
       return;
     }
-    
+    setIsLoading(true)
+    openModal()
+
     try {
       const response = await createOrder(data)
       if(response.success) {
@@ -49,13 +54,10 @@ export const OrderForm = ({className, products, ...props}: OrderFormProps): JSX.
         setCity('')
         setDelivery('')
         setFullPrice(0)
-        setSuccess(true)
+        setIsLoaded(true)
+        setIsLoading(false)
+        setRecieverName(response.order_info.customer_name)
         document.cookie = `product=[]`
-        console.log(cookie.length);
-        
-        setTimeout(() => {
-          document.location.reload()
-        }, 1000)
       }
       else {
         setError(response.message)
@@ -63,8 +65,19 @@ export const OrderForm = ({className, products, ...props}: OrderFormProps): JSX.
     } catch (error: Error | any) {
       setError(error.message)
     }
-    
+
   }
+
+  const openModal = () => {
+    setIsOpen(true);
+    document.body.style.overflow = 'hidden';
+};
+const closeModal = () => {
+  setIsOpen(false);
+  setIsLoaded(false);
+  setIsLoading(false);
+  document.body.style.overflow = '';
+};
   return (
     <form className={cn(className, styles.orderForm)} {...props} onSubmit={handleSubmit(onSubmit)}>
       <div className={cn(styles.subForm, styles.contactForm)}>
@@ -97,8 +110,8 @@ export const OrderForm = ({className, products, ...props}: OrderFormProps): JSX.
       </div>
       <H tag="h3" className={styles.fullPrice}>Загальна ціна: {fullPrice} грн</H>
       <Button appearance="black" size="l" className={styles.button}>Замовити</Button>
-      {success && <Alert appearance="success">Ваше замовлення прийняте</Alert>}
       {error && <Alert appearance="error">{error}</Alert>}
+      <Modal loading={isLoading} loaded={isLoaded} recieverName={recieverName} isOpen={isOpen} onClose={closeModal} type="order"></Modal>
     </form>
   )
 }

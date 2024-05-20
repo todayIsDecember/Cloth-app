@@ -8,7 +8,7 @@ export const getWarehouses = async (keywords, cityName) => {
     },
     body: JSON.stringify({
       "CityName": cityName,
-	"keywords": keywords
+      "keywords": keywords,
     }),
   });
   const data = await response.json();

@@ -1,8 +1,12 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
 export interface ModalProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-    images : string[]
+    images? : string[]
     onClose : () => void
     isOpen: boolean,
-    description: string
+    description?: string,
+    type: string,
+    loading?: boolean
+    loaded?: boolean,
+    recieverName?: string
 }

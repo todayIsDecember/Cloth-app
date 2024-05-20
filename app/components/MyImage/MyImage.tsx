@@ -26,7 +26,7 @@ export const MyImage = ({images, description, className, ...props}: MyImageProps
     return (
         <div className={cn(className, styles.imageContainer)} {...props}>
             <Image onClick={openModal} src={`${API.image.get}/${images[0]}`} fill priority sizes="(100vw - 30px)" className={styles.image} alt="image"></Image>
-            <Modal description={description} isOpen={isOpen} onClose={closeModal} images={images}></Modal>
+            <Modal type="product" description={description} isOpen={isOpen} onClose={closeModal} images={images}></Modal>
         </div>
     )
 }

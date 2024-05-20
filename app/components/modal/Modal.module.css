@@ -1,24 +1,36 @@
 .modal {
     position: fixed;
-    top: -1000px;
+    top: -100000px;
     opacity: 0;
     left: 0;
     width: 100%;
     min-height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
     z-index: 99999;
+    transition: top 0.1s ease 0.2s, opacity 0.2s ease 0s;
+}
+
+.product {
+    background-color: rgba(0, 0, 0, 0.6);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: top 0.1s ease 0.2s, opacity 0.2s ease 0s;
     gap: 20px;
+}
+
+.order {
+    background-color: var(--white);
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    text-align: center;
+    gap: 40px;
 }
 
 .open {
     top: 0px;
     opacity: 1;
-    transition: top 0.1s ease 0s, opacity 0.2s ease 0.15s; 
+    transition: top 0.1s ease 0s, opacity 0.2s ease 0.15s;
 }
 
 .description {
@@ -60,7 +72,7 @@
     .slider {
         width: 75%;
     }
-    
+
 }
 
 @media (max-width: 700px) {
@@ -74,5 +86,5 @@
     .description {
         display: inline-block;
     }
-    
+
 }
