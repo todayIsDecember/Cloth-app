@@ -1,4 +1,5 @@
 'use client'
+
 import { useEffect, useState } from "react"
 import { Navigation, Product } from "../../components"
 import styles from './page.module.css'
@@ -20,7 +21,7 @@ export default function Catalog ():JSX.Element {
                 setProducts(data)
                 return
             }
-        
+
 
         getAllProd()
         return

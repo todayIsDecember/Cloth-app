@@ -11,26 +11,12 @@ import { API } from "../../../helpers/api";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "../button/Button";
 import ExitIcon from '../../../public/exit.svg'
-import { Player } from '@lordicon/react'
 import { H } from "../h/H";
-
-const IconLoading = require('../../../public/system-regular-720-spinner-half-circles.json')
-const IconDone = require('../../../public/done.json')
 
 export const Modal = ({className, type, loading, loaded, recieverName,  description, isOpen, onClose, images, ...props}: ModalProps): JSX.Element => {
 
     const modalRef = useRef<HTMLDivElement>(null);
 
-    const playerRef = useRef<Player>(null);
-
-    useEffect(() => {
-        if (isOpen && playerRef.current) {
-            const interval = setInterval(() => {
-                playerRef.current?.play();
-            }, 1000); // Adjust interval time as needed
-            return () => clearInterval(interval);
-        }
-    }, [isOpen]);
 
 
     const handleModalClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -73,14 +59,14 @@ export const Modal = ({className, type, loading, loaded, recieverName,  descript
                 {
                     loading &&
                     <>
-                        <Player ref={playerRef}  icon={IconLoading} size={100} />
+                        <Image src={'/loading.webp'} width={100} height={100} alt="image"/>
                         <H tag="h3">{'ваше замовлення уже летить до нас'}</H>
                     </>
                 }
                 {
                     loaded &&
                     <>
-                        <Player ref={playerRef}  icon={IconDone} size={100} />
+                        <Image src={'/done.webp'} width={100} height={100} alt="image"/>
                         <H tag="h2">{`${recieverName}, Дякуємо за ваше замовлення`}</H>
                         <H tag="h3">{'ближчим часом з вами зв`яжеться наш менеджер для уточнення даних'}</H>
                         <H tag="h3">{'Всього найкращого 💙💛'}</H>

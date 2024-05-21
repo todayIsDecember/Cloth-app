@@ -70,13 +70,11 @@ export const OrderForm = ({className, products, ...props}: OrderFormProps): JSX.
 
   const openModal = () => {
     setIsOpen(true);
-    document.body.style.overflow = 'hidden';
 };
 const closeModal = () => {
   setIsOpen(false);
   setIsLoaded(false);
   setIsLoading(false);
-  document.body.style.overflow = '';
 };
   return (
     <form className={cn(className, styles.orderForm)} {...props} onSubmit={handleSubmit(onSubmit)}>

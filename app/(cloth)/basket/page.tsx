@@ -1,4 +1,5 @@
 'use client'
+
 import { useEffect, useState } from 'react'
 import styles from './page.module.css'
 import { getProductById } from '../../API/getProductById';
@@ -28,14 +29,14 @@ export default function Basket ():JSX.Element {
     };
 
     fetchProducts();
-    
-        
+
+
     }, [])
 
     const onChangeForm = (data) => {
         setFormData(prevData => {
             const index = prevData.findIndex(item => item.id === data.id);
-            
+
             if(index === -1) {
                 // Якщо об'єкт з таким id не знайдено, додаємо новий об'єкт до formData
                 return [...prevData, data];
@@ -44,9 +45,9 @@ export default function Basket ():JSX.Element {
                 return prevData.map(item => (item.id === data.id ? data : item));
             }
         });
-        
+
     }
-    
+
     return (
         <div className={styles.basket}>
             <div className={styles.productsContainer}>

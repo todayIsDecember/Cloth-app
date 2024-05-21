@@ -15,12 +15,10 @@ export const MyImage = ({images, description, className, ...props}: MyImageProps
 
     const openModal = () => {
         setIsOpen(true);
-        document.body.style.overflow = 'hidden';
     };
 
     const closeModal = () => {
         setIsOpen(false);
-        document.body.style.overflow = '';
     };
 
     return (
