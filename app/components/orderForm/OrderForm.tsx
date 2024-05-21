@@ -75,6 +75,7 @@ const closeModal = () => {
   setIsOpen(false);
   setIsLoaded(false);
   setIsLoading(false);
+  location.reload()
 };
   return (
     <form className={cn(className, styles.orderForm)} {...props} onSubmit={handleSubmit(onSubmit)}>
