@@ -4,7 +4,6 @@ export interface ModalProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElem
     images? : string[]
     onClose : () => void
     isOpen: boolean,
-    description?: string,
     type: string,
     loading?: boolean
     loaded?: boolean,

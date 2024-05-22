@@ -6,6 +6,7 @@ import styles from './page.module.css'
 import { IProduct } from "../../../interfaces/product.interface"
 import { getAllProducts } from "../../API/getAllProducts"
 import { getProductsByCategory } from "../../API/getProductsByCategory"
+import { motion } from 'framer-motion'
 
 export default function Catalog ():JSX.Element {
     const [products, setProducts] = useState<IProduct[]>([])
@@ -39,9 +40,9 @@ export default function Catalog ():JSX.Element {
 }, [navValue])
 
     return (
-        <div className={styles.catalog}>
+        <motion.div className={styles.catalog} layout>
             <Navigation selectedValue={(value) => setNavValue(value)} className={styles.nav}/>
             {products.map(product => <Product key={product.id} product={product} />)}
-        </div>
+        </motion.div>
     )
 }

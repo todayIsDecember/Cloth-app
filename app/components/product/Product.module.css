@@ -1,22 +1,56 @@
 .product {
     display: grid;
     grid-template-columns: 300px 1fr;
-    grid-template-rows: auto;
-    padding: 15px;
+    grid-template-areas:
+    "image title"
+    "image description"
+    "image btn"
+    "infoContainer infoContainer"
+    "priceContainer priceContainer";
     border: 1px solid var(--grey-light);
-    align-items: center;
     border-radius: 15px;
-    justify-items: center;
+    gap: 20px 0px;
+    padding: 15px;
 }
 
-.info {
+.image {
+    grid-area: image;
+    align-self: center;
+}
+
+.title {
+    grid-area: title;
+    padding: 0px 10px;
+    text-align: center;
+}
+
+.infoContainer {
+    grid-area: infoContainer;
+    display: none;
+    grid-template-columns: 1fr;
+    gap: 5px 0px;
+}
+
+.InfoContainerOpen {
     display: grid;
-    align-content: space-between;
-    padding: 15px 30px;
-    margin: 0;
+}
+.description {
+    grid-area: description;
+    padding: 0px 60px;
+}
+
+.btn {
+    grid-area: btn;
+    justify-self: end;
+    align-self: end;
+    display: grid;
+    gap: 5px;
+    align-items: center;
+    grid-template-columns: 1fr auto;
 }
 
 .priceContainer {
+    grid-area: priceContainer;
     border-top: 1px solid var(--grey-light);
     display: grid;
     grid-template-columns: 1fr auto;
@@ -25,6 +59,21 @@
     font-size: 14px;
     color: var(--black-light);
     padding-top: 15px;
+}
+
+
+.infoDetails {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 10px;
+    justify-items: start;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed var(--green);
+}
+
+.infoDetails:nth-last-child(1) {
+    border: none;
 }
 
 .icon {
@@ -36,36 +85,69 @@
     margin-top: 10px;
 }
 
-@media (max-width: 700px) {
-    .description {
-        display: none;
+.arrow {
+    transition: 0.3s ease;
+}
+
+.open {
+    transform: rotate(-90deg);
+}
+
+.value {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+/* Adaptahion for mobile */
+
+@media (max-width: 1100px) {
+    .product {
+        grid-template-areas:
+        "title title"
+        "image description"
+        "image btn"
+        "infoContainer infoContainer"
+        "priceContainer priceContainer";
     }
 
-    .title {
-        align-self: center;
-    }
-
-    .info {
-        height: 100%;
+    .image {
+        align-self: start;
     }
 }
 
-@media (max-width: 550px) {
+
+@media (max-width: 900px) {
+    .description {
+        padding: 0px 20px;
+    }
+}
+
+@media (max-width: 700px) {
     .product {
         grid-template-columns: 1fr;
-        grid-template-rows: 400px 1fr;
+        grid-template-areas:
+        "image"
+        "title"
+        "btn"
+        "infoContainer"
+        "priceContainer";
     }
-    .title {
-        text-align: center;
-        padding: 10px 0px;
+
+    .image {
+        justify-self: center;
     }
-    .info {
-        width: 100%;
+
+    .description {
+        padding: 0;
     }
 }
 
-@media (max-width: 800px) {
-    .info {
-        padding: 15px 20px;
+@media (max-width: 500px) {
+    .infoDetails {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    .infoContainer {
+        gap: 15px 0px;
     }
 }

@@ -5,13 +5,14 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(6, 50px);
-    grid-template-areas: 
+    grid-template-areas:
     "name name"
     "addImage image"
     "color image"
     "category image"
     "type image"
     "description description"
+    "valueContainer valueContainer"
     "price button";
     gap: 40px;
 }
@@ -22,6 +23,12 @@
 
 .addImage {
     grid-area: addImage;
+}
+
+.valueContainer {
+    grid-area: valueContainer;
+    display: grid;
+    gap: 20px;
 }
 
 .image {
@@ -57,4 +64,25 @@
 .button {
     grid-area: button;
     justify-self: end;
+}
+
+.textarea {
+    border: 1px solid var(--grey-light);
+    outline: none;
+    padding: 10px 20px;
+    color: var(--black-light);
+    font-size: 12px;
+}
+
+.valueList {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.value {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 15px;
+    align-items: center;
 }

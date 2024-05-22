@@ -15,7 +15,14 @@
 
 @media (max-width: 700px) {
     .imageContainer {
-        width: 300px;
+        width: 400px;
         height: 400px;
+    }
+}
+
+@media (max-width: 500px) {
+    .imageContainer {
+        width: 300px;
+        height: 300px;
     }
 }

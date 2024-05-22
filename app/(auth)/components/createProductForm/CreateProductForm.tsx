@@ -3,18 +3,27 @@
 import { CreateProductFormProps } from "./CreateProductFormProps";
 import cn from 'classnames';
 import styles from './CreateProductForm.module.css'
-import { Alert, Button, DropBox, Input, Textarea } from "../../../components";
+import { Alert, Button, DropBox, Input, Textarea, H } from "../../../components";
 import { useState } from "react";
 import DownloadImageIcon from '../../../../public/downloadImage.svg'
 import Image from 'next/image'
-import { useForm } from "react-hook-form";
+import { useFieldArray, useForm, Controller } from "react-hook-form";
 import { IProduct } from "../../../../interfaces/product.interface";
 import { API } from "../../../../helpers/api";
+import AddIcon from '../../../../public/add.svg'
 
 export const CreateProductForm = ({className, ...props}: CreateProductFormProps): JSX.Element => {
     const [uploadedFileUrl, setUploadedFileUrl] = useState<string>();
     const [uploadedFile, setUploadedFile] = useState<File>();
-    const {register, handleSubmit} = useForm<Pick<IProduct, 'name' | 'description' | 'color' | 'price' | 'photo' | 'category' | 'type' | 'width' | 'height'>>()
+    const {register, handleSubmit, control} = useForm<Pick<IProduct, 'name' | 'description' | 'color' | 'price' | 'photo' | 'category' | 'type' | 'width' | 'height' | 'value'>>({
+        defaultValues: {
+            value: []
+        }
+    })
+    const {fields, append, remove} = useFieldArray({
+        control,
+        name: 'value'
+    })
     const [category, setCategory] = useState('')
     const [error, setError] = useState<string>('')
     const [success, setSuccess] = useState<boolean>(false)
@@ -22,9 +31,9 @@ export const CreateProductForm = ({className, ...props}: CreateProductFormProps)
 
     const handleImageUpload = (changeEvent:any) => {
         const image = changeEvent.target.files[0];
-    
+
         setUploadedFile(image)
-    
+
         if(image) {
             const reader = new FileReader();
             reader.onload = () => {
@@ -77,7 +86,7 @@ export const CreateProductForm = ({className, ...props}: CreateProductFormProps)
             }
 
     }
-    
+
     return (
         <form className={styles.form} {...props} onSubmit={handleSubmit(onSubmit)}>
             <Input inputValue="Назва" className={styles.name} createInput {...register('name')}/>
@@ -99,6 +108,27 @@ export const CreateProductForm = ({className, ...props}: CreateProductFormProps)
             <Input inputValue="Ціна" className={styles.price} createInput {...register('price')}/>
             <Input inputValue="Колір" className={styles.color} createInput {...register('color')}/>
             <Textarea value="Опис" className={styles.description} {...register('description')}/>
+            <div className={styles.valueContainer}>
+                <H tag="h3">Властивості:</H>
+                <div className={styles.valueList}>
+                    {fields.map((field, index) => (
+                        <div key={field.id} className={styles.value}>
+                            <Controller
+                            name={`value.${index}.0`}
+                            control={control}
+                            render={({ field }) => <textarea {...field} placeholder="назва" className={styles.textarea}/>}
+                            />
+                            <Controller
+                            name={`value.${index}.1`}
+                            control={control}
+                            render={({ field }) => <textarea {...field} placeholder="Значення"  className={styles.textarea}/>}
+                            />
+                            <Button appearance="black" size="l" onClick={() => remove(index)}>Видалити</Button>
+                        </div>
+                    ))}
+                </div>
+                <AddIcon onClick={() => append([''])}/>
+            </div>
             <DropBox value="категорія" elements={['штори', 'тюлі']} isEditable onSave={(el) => {setCategory(el)}} className={styles.category}></DropBox>
             <Input inputValue="тип" className={styles.type} createInput {...register('type')}/>
             <Button appearance="black" size="l" className={styles.button}>Створити</Button>

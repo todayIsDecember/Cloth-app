@@ -1,0 +1,17 @@
+.tag {
+  border-radius: 8px;
+  padding: 3px 7px;
+  font-size: 10px;
+  text-transform: uppercase;
+  width: auto;
+}
+
+.green {
+  background-color: var(--green);
+  color: var(--white);
+}
+
+.ghost {
+  border: 1px solid var(--black);
+  color: var(--black);
+}

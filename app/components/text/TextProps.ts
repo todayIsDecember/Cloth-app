@@ -1,5 +1,6 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
 export interface TextProps extends DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement> {
-    children: React.ReactNode
+    children: React.ReactNode,
+    size?: "s" | "m" | "l"
 }

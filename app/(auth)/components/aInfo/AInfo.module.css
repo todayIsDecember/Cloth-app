@@ -25,7 +25,6 @@
   padding: 10px 20px;
   color: var(--black-light);
   font-size: 12px;
-  resize: none;
 }
 
 .button {
@@ -80,4 +79,16 @@ input:checked + .slider:before {
   -ms-transform: translateX(13px);
   transform: translateX(13px);
   background: var(--white);
+}
+
+.valueList {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.value {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 30px;
 }

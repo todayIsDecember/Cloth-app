@@ -3,17 +3,34 @@
 import { AInfoProps } from "./AInfoProps";
 import cn from 'classnames'
 import styles from './AInfo.module.css'
-import { Alert, Button, H } from "../../../components";
+import { Alert, Button, H, Textarea } from "../../../components";
 import { useState } from "react";
-import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller, useFieldArray } from "react-hook-form";
 import { IProduct } from "../../../../interfaces/product.interface";
 import { API } from "../../../../helpers/api";
+import AddIcon from '../../../../public/add.svg'
 
 export const AInfo = ({product, className, ...props}: AInfoProps):JSX.Element => {
   const [discontinued, setDiscontinued] = useState(product.discontinued)
-  const {register, handleSubmit, control} = useForm<Pick<IProduct, 'name' | 'description' | 'color' | 'discontinued' | 'price'>>()
+  const {register, handleSubmit, control, setValue} = useForm<Pick<IProduct, 'name' | 'description' | 'color' | 'discontinued' | 'price' | 'value'>>(
+    {
+      defaultValues: {
+          name: product.name,
+          description: product.description,
+          color: product.color,
+          discontinued: product.discontinued,
+          price: product.price,
+          value: product.value || [] // Assuming product.value is the array of arrays
+      }
+    }
+  )
   const [isError, setIsError] = useState<string>('')
   const [isSuccess, setIsSuccess] = useState<boolean>(false)
+
+  const {fields, append, remove, update} = useFieldArray({
+    control,
+    name: 'value'
+  })
 
   const onSubmit = async (data) => {
     await fetch(`${API.products.edit}/${product.id}`, {
@@ -26,7 +43,8 @@ export const AInfo = ({product, className, ...props}: AInfoProps):JSX.Element =>
         "description": data.description,
         "color": data.color,
         "discontinued": data.discontinued,
-        "price": Number(data.price)
+        "price": Number(data.price),
+        "value": data.value
       })
     }).then(res => res.json()
     ).then(data => {
@@ -60,6 +78,27 @@ export const AInfo = ({product, className, ...props}: AInfoProps):JSX.Element =>
         <div className={styles.subConteiner}>
           <H tag="h3">Ціна:</H>
           <textarea className={styles.textarea} defaultValue={product.price} {...register('price')}></textarea>
+        </div>
+        <div className={styles.subConteiner}>
+          <H tag="h3">Властивості:</H>
+          <div className={styles.valueList}>
+            {fields.map((field, index) => (
+              <div key={field.id} className={styles.value}>
+                <Controller
+                  name={`value.${index}.0`}
+                  control={control}
+                  render={({ field }) => <textarea {...field} placeholder="назва" className={styles.textarea}/>}
+                />
+                <Controller
+                  name={`value.${index}.1`}
+                  control={control}
+                  render={({ field }) => <textarea {...field} placeholder="Значення"  className={styles.textarea}/>}
+                />
+                <Button appearance="black" size="l" className={styles.button} onClick={() => remove(index)}>Видалити</Button>
+              </div>
+            ))}
+            <AddIcon onClick={() => append([''])}/>
+          </div>
         </div>
         <div className={styles.subConteiner}>
           <H tag="h3">відключити:</H>

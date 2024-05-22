@@ -11,4 +11,5 @@ export interface IProduct {
   price: number;
   discontinued: boolean;
   isfinished: true;
+  value: string[][];
 }

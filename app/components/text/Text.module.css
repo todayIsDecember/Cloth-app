@@ -1,5 +1,17 @@
 .text {
-    font-size: 14px;
+    font-size: 12px;
     color: var(--black-light);
     letter-spacing: 1.2px;
+}
+
+.s {
+    font-size: 10px;
+}
+
+.m {
+    font-size: 12px;
+}
+
+.l {
+    font-size: 14px;
 }

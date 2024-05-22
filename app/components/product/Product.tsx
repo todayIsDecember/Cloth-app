@@ -3,19 +3,48 @@
 import { ProductProps } from "./ProductProps";
 import cn from 'classnames';
 import styles from './Product.module.css'
-import { H, Button, Text, BackDrop, MyImage, Alert } from "..";
-import { useEffect, useState } from "react";
+import { H, Button, Text, BackDrop, MyImage, Alert, Tag } from "..";
+import { ForwardedRef, forwardRef, useEffect, useState } from "react";
 import DeleteIcon from '../../../public/delete.svg'
 import ByIcon from '../../../public/buy.svg'
+import ArrowIcon from '../../../public/arrow.svg'
+import { motion } from 'framer-motion'
 
-export const Product = ({className, product, ...props}: ProductProps): JSX.Element => {
+// eslint-disable-next-line react/display-name
+export const Product = forwardRef(({className, product, ...props}: ProductProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
 
     const [addToBasket, setAddToBasket] = useState<boolean>(false)
-    const [mainPhoto, setMainPhoto] = useState<string>(product.photo[0])
+    const [open, setOpen] = useState<boolean>(false)
+    const [isVisibleDescription, setIsVisibleDescription] = useState<boolean>(false)
 
     useEffect(() => {
+        const handleResize = () => {
+            if(window.innerWidth <= 700) {
+                setIsVisibleDescription(false)
+                return
+            }
+            setIsVisibleDescription(true)
+        }
+
+        handleResize()
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, [])
+
+    const variants = {
+        hidden: {
+            opacity: 0,
+            height: 0,
+        },
+        visible: {
+            opacity: 1,
+            height: 'auto',
+        }
+    }
+    useEffect(() => {
         const cookie = document.cookie.split(';').find(c => c.trim().startsWith('product='));
-        if(!cookie) { 
+        if(!cookie) {
             return
         }
         else {
@@ -55,19 +84,40 @@ export const Product = ({className, product, ...props}: ProductProps): JSX.Eleme
         }
     }
     return (
-        <>
-            <div className={cn(className, styles.product)} {...props}>
+            <div className={cn(className, styles.product)} {...props} ref={ref}>
                 <MyImage description={product.description} images={product.photo} className={styles.image}></MyImage>
-                <div className={styles.info}>
-                    <H tag="h2" className={styles.title}>{product.name}</H>
-                    <Text className={styles.description}>{product.description}</Text>
-                    <div className={styles.priceContainer}>
-                        <div>{product.price}грн / м</div>
-                        <div onClick={onClickButtonBasketHandler}>{addToBasket? <DeleteIcon className={styles.icon}/> : <ByIcon className={styles.icon}/>}</div>
-                    </div>
-                    {addToBasket && <Alert appearance="success" className={styles.alert}>Товар додано до кошика</Alert>}
+                <H tag="h2" className={styles.title}>{product.name}</H>
+                {isVisibleDescription && <Text size="l" className={styles.description}>{product.description}</Text>}
+                <Button className={styles.btn} appearance="black" size="m" onClick={() => setOpen(open => !open)}>{'читати більше'} <ArrowIcon className={cn(styles.arrow, {[styles.open]: open})}/></Button>
+                <motion.div
+                    className={cn(styles.infoContainer, {[styles.InfoContainerOpen]: open})}
+                    variants={variants}
+                    animate={open ? 'visible' : 'hidden'}
+                    initial="hidden"
+                >
+                        {!isVisibleDescription && <Text size="l">{product.description}</Text>}
+                        {product.value &&product.value.map((item) =>  (
+                            <>
+                                <div className={styles.infoDetails}>
+                                    <Tag className={styles.infoDetailsTitle} color="green" size="m">{item[0]}</Tag>
+                                    <Text size="m">{item[1]}</Text>
+                                </div>
+                            </>
+                        ))}
+                        <div className={styles.infoDetails}>
+                            <Tag className={styles.infoDetailsTitle}color="green" size="m">{'колір'}</Tag>
+                            <Text size="s">{product.color}</Text>
+                        </div>
+                        <div className={styles.infoDetails}>
+                            <Tag className={styles.infoDetailsTitle}color="green" size="m">{'матеріал'}</Tag>
+                            <Text size="s">{product.type}</Text>
+                        </div>
+                </motion.div>
+                <div className={styles.priceContainer}>
+                    <div>{product.price}грн / м</div>
+                    <div onClick={onClickButtonBasketHandler}>{addToBasket? <DeleteIcon className={styles.icon}/> : <ByIcon className={styles.icon}/>}</div>
                 </div>
+                {addToBasket && <Alert appearance="success" className={styles.alert}>Товар додано до кошика</Alert>}
             </div>
-        </>
     )
-}
+})

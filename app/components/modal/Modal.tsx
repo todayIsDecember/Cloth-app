@@ -13,7 +13,7 @@ import { Button } from "../button/Button";
 import ExitIcon from '../../../public/exit.svg'
 import { H } from "../h/H";
 
-export const Modal = ({className, type, loading, loaded, recieverName,  description, isOpen, onClose, images, ...props}: ModalProps): JSX.Element => {
+export const Modal = ({className, type, loading, loaded, recieverName, isOpen, onClose, images, ...props}: ModalProps): JSX.Element => {
 
     const modalRef = useRef<HTMLDivElement>(null);
 
@@ -46,9 +46,6 @@ export const Modal = ({className, type, loading, loaded, recieverName,  descript
                     </div>
                 ))}
             </Slider>
-            <div className={styles.description}>
-                {description}
-            </div>
             <ExitIcon className={styles.exit} onClick={onClose}/>
         </div>
     )

@@ -33,17 +33,6 @@
     transition: top 0.1s ease 0s, opacity 0.2s ease 0.15s;
 }
 
-.description {
-    display: none;
-    background-color: var(--grey-light);
-    color: var(--black-light);
-    letter-spacing: 0.3px;
-    padding: 10px;
-    border-radius: 15px;
-    width: 80%;
-    font-size: 12px;
-}
-
 .exit {
     margin-bottom: 30px;
 }
@@ -81,10 +70,6 @@
     }
     .image {
         height: 50dvh
-    }
-
-    .description {
-        display: inline-block;
     }
 
 }
