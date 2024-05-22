@@ -40,9 +40,9 @@ export default function Catalog ():JSX.Element {
 }, [navValue])
 
     return (
-        <motion.div className={styles.catalog} layout>
+        <div className={styles.catalog}>
             <Navigation selectedValue={(value) => setNavValue(value)} className={styles.nav}/>
-            {products.map(product => <Product key={product.id} product={product} />)}
-        </motion.div>
+                {products.map(product => <Product key={product.id} product={product} />)}
+        </div>
     )
 }

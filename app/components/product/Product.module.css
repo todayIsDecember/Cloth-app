@@ -80,6 +80,7 @@
     width: 25px;
     height: 25px;
     fill: var(--black-light);
+    cursor: pointer;
 }
 .alert {
     margin-top: 10px;
