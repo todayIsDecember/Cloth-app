@@ -46,31 +46,25 @@ export const OrderForm = ({className, products, ...props}: OrderFormProps): JSX.
     setIsLoading(true)
     openModal()
 
-    setTimeout(()=> {
-      setIsLoading(false)
-      setIsLoaded(true)
-      setRecieverName('Роман')
-    }, 3000)
-
-    // try {
-    //   const response = await createOrder(data)
-    //   if(response.success) {
-    //     reset()
-    //     setIsDelivery(false)
-    //     setCity('')
-    //     setDelivery('')
-    //     setFullPrice(0)
-    //     setIsLoaded(true)
-    //     setIsLoading(false)
-    //     setRecieverName(response.order_info.customer_name)
-    //     document.cookie = `product=[]`
-    //   }
-    //   else {
-    //     setError(response.message)
-    //   }
-    // } catch (error: Error | any) {
-    //   setError(error.message)
-    // }
+    try {
+      const response = await createOrder(data)
+      if(response.success) {
+        reset()
+        setIsDelivery(false)
+        setCity('')
+        setDelivery('')
+        setFullPrice(0)
+        setIsLoaded(true)
+        setIsLoading(false)
+        setRecieverName(response.order_info.customer_name)
+        document.cookie = `product=[]`
+      }
+      else {
+        setError(response.message)
+      }
+    } catch (error: Error | any) {
+      setError(error.message)
+    }
 
   }
 
