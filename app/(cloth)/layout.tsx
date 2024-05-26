@@ -34,6 +34,7 @@ export default function RootLayout({
             }}
           />
       </head>
+      <meta name="google-site-verification" content="oa8G28xfIpydNia1_SGIQ1XlgjkcIpE7jJQIrQ8HbuE" />
       <body className={open_Sans.className}>
         <div className={styles.wrapper}>
           <Header className={styles.header}/>

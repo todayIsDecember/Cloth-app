@@ -31,6 +31,7 @@ export default function RootLayout({
             `,
           }}
         />
+        <meta name="google-site-verification" content="oa8G28xfIpydNia1_SGIQ1XlgjkcIpE7jJQIrQ8HbuE" />
       </head>
       <body className={open_Sans.className}>
         {children}
