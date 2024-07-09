@@ -68,12 +68,13 @@
     gap: 10px;
     justify-items: start;
     align-items: center;
-    padding-bottom: 10px;
-    border-bottom: 1px dashed var(--green);
+    padding: 10px 0px;
+    border-bottom: 1px dashed var(--black-light);
 }
 
 .infoDetails:nth-last-child(1) {
     border: none;
+    padding-bottom: none;
 }
 
 .icon {
